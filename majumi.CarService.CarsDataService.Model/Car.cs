@@ -5,7 +5,7 @@ public class Car
     public int CarID { get; set; }
     public string Make { get; set; }
     public string Model { get; set; }
-    public DateTime Year { get; set; }
+    public int Year { get; set; }
     public string Color { get; set; }
     public int Mileage { get; set; }
     public string Transmission { get; set; }
@@ -24,7 +24,7 @@ public class Car
 
 
     public Car() { }
-    public Car(int carID, string make, string model, DateTime year, string color, int mileage, string transmission,
+    public Car(int carID, string make, string model, int year, string color, int mileage, string transmission,
     string fuelType, string engineSize, int horsepower, int torque, string drivetrain, int seatingCapacity, string vehicleType,
     string location, string vin, string licensePlate, string warranty)
     {
