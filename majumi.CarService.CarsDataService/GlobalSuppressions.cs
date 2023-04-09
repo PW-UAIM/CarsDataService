@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "<Oczekujące>", Scope = "member", Target = "~F:majumi.CarService.MechanicsDataService.Rest.Controllers.MechanicDataController._logger")]
+[assembly: SuppressMessage("CodeQuality", "IDE0052:Usuń nieodczytywane składowe prywatne", Justification = "<Oczekujące>", Scope = "member", Target = "~F:majumi.CarService.CarsDataService.Rest.Controllers.CarDataController._logger")]

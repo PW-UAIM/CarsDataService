@@ -17,12 +17,12 @@ public class Tests : ITestsService
 
         try
         {
-            IMechanicCollection mechanicCollection = new MechanicCollection();
+            ICarCollection carCollection = new CarCollection();
 
-            Mechanic[] mechanics1 = mechanicCollection.GetAllMechanics();
-            MechanicData[] mechanics2 = GetMechanics(host, (ushort)port);
+            Car[] cars1 = carCollection.GetAllCars();
+            CarData[] cars2 = GetCars(host, (ushort)port);
 
-            Debug.Assert(condition: mechanics1.Length == mechanics2.Length);
+            Debug.Assert(condition: cars1.Length == cars2.Length);
         }
         catch (Exception e)
         {
@@ -31,9 +31,9 @@ public class Tests : ITestsService
         return "No errors";
     }
 
-    private MechanicData[] GetMechanics(string webServiceHost, ushort webServicePort)
+    private CarData[] GetCars(string webServiceHost, ushort webServicePort)
     {
-        string webServiceUri = string.Format("https://{0}:{1}/allMechanics", webServiceHost, webServicePort);
+        string webServiceUri = string.Format("https://{0}:{1}/allCars", webServiceHost, webServicePort);
 
         Task<string> webServiceCall = CallWebService(HttpMethod.Get, webServiceUri);
 
@@ -41,9 +41,9 @@ public class Tests : ITestsService
 
         string jsonResponseContent = webServiceCall.Result;
 
-        MechanicData[] mechanics = ConvertJson(jsonResponseContent);
+        CarData[] cars = ConvertJson(jsonResponseContent);
 
-        return mechanics;
+        return cars;
     }
 
     public static async Task<string> CallWebService(HttpMethod httpMethod, string webServiceUri)
@@ -61,11 +61,11 @@ public class Tests : ITestsService
         return httpResponseContent;
     }
 
-    public MechanicData[] ConvertJson(string json)
+    public CarData[] ConvertJson(string json)
     {
-        MechanicData[] mechanics = JsonSerializer.Deserialize<MechanicData[]>(json);
+        CarData[] cars = JsonSerializer.Deserialize<CarData[]>(json);
 
-        return mechanics;
+        return cars;
     }
 }
 

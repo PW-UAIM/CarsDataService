@@ -9,30 +9,30 @@ namespace majumi.CarService.CarsDataService.Rest.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class MechanicDataController : ControllerBase, IMechanicDataService, ITestsService
+public class CarDataController : ControllerBase, ICarDataService, ITestsService
 {
-    private readonly ILogger<MechanicDataController> _logger;
+    private readonly ILogger<CarDataController> _logger;
 
-    private readonly IMechanicCollection mechanicCollection;
+    private readonly ICarCollection carCollection;
 
-    public MechanicDataController(ILogger<MechanicDataController> logger)
+    public CarDataController(ILogger<CarDataController> logger)
     {
         _logger = logger;
-        mechanicCollection = new MechanicCollection();
+        carCollection = new CarCollection();
     }
 
     [HttpGet]
-    [Route("/mechanic/{id:int}")]
-    public Mechanic GetMechanic(int id)
+    [Route("/car/{id:int}")]
+    public Car GetCar(int id)
     {
-        return mechanicCollection.GetById(id);
+        return carCollection.GetById(id);
     }
 
     [HttpGet]
-    [Route("/allMechanics")]
-    public Mechanic[] GetAllMechanics()
+    [Route("/allCars")]
+    public Car[] GetAllCars()
     {
-        return mechanicCollection.GetAllMechanics();
+        return carCollection.GetAllCars();
     }
 
     [HttpGet]
