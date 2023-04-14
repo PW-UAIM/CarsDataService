@@ -1,14 +1,16 @@
 echo off
 set url=https://localhost:5000
 
-CALL:curl_test "Dane samochodu o ID 1" GET /car/1 
+CALL:curl_test "Dane samochodu o ID 1" GET /car/1
+
+CALL:curl_test "Wszystkie samochody" GET /car/all
 
 CALL:curl_test "Dane samochodow klienta o ID 6" GET /car/all/client/6
 
 
 echo Nazwa testu: "Dodaj samochod o ID 20""
 echo Testowany url: %url%%~3
-curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json"  -d ^
+curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json" -d ^
 "{^
 	\"carID\": 20,^
 	\"make\": \"Renault\",^
@@ -23,9 +25,9 @@ curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json" 
 echo:
 echo:
 
-CALL:curl_test "Dane wizyty o ID 20" GET /car/20 
+CALL:curl_test "Dane samochodu o ID 20" GET /car/20
 
-CALL:curl_test "Dane samochodow klienta o ID 6" GET /car/all/client/6
+EXIT /B 0
 
 :curl_test
 echo Nazwa testu: %~1
@@ -35,4 +37,4 @@ curl -X %~2 ^
 	 -H 'accept:application/json'
 echo:
 echo:
-pause
+EXIT /B 0
