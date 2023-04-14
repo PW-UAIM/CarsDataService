@@ -1,6 +1,5 @@
 ﻿using majumi.CarService.CarsDataService.Model;
 using majumi.CarService.CarsDataService.Model.Services;
-using System.Linq.Expressions;
 
 namespace majumi.CarService.CarsDataService.Logic;
 
