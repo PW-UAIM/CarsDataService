@@ -16,20 +16,10 @@ public static class DataConverter
             Make = car.Make,
             Model = car.Model,
             Year = car.Year,
-            Color = car.Color,
             Mileage = car.Mileage,
-            Transmission = car.Transmission,
-            FuelType = car.FuelType,
             EngineSize = car.EngineSize,
-            Horsepower = car.Horsepower,
-            Torque = car.Torque,
-            Drivetrain = car.Drivetrain,
-            SeatingCapacity = car.SeatingCapacity,
-            VehicleType = car.VehicleType,
-            Location = car.Location,
-            VIN = car.VIN,
             LicensePlate = car.LicensePlate,
-            Warranty = car.Warranty
+            ClientID = car.ClientID
         };
     }
 }

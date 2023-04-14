@@ -36,6 +36,20 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
     }
 
     [HttpGet]
+    [Route("/car/all/client/{id:int}")]
+    public Car[] GetCarsByClient(int id)
+    {
+        return carCollection.GetCarsByClient(id);
+    }
+
+    [HttpPost]
+    [Route("/car/add")]
+    public bool AddCar(Car car) 
+    {
+        return carCollection.AddCar(car);
+    }
+
+    [HttpGet]
     [Route("/runTests")]
     public string RunTests(string host, int port)
     {

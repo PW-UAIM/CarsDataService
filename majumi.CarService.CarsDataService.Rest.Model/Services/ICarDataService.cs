@@ -7,4 +7,6 @@ public interface ICarDataService
     public Car GetCar(int carID);
 
     public Car[] GetAllCars();
+
+    public Car[] GetCarsByClient(int clientID);
 }
