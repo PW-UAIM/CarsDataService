@@ -29,7 +29,7 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
     }
 
     [HttpGet]
-    [Route("/allCars")]
+    [Route("/car/all")]
     public Car[] GetAllCars()
     {
         return carCollection.GetAllCars();
