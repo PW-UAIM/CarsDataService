@@ -13,6 +13,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.CarsDataS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "majumi.CarService.CarsDataService.Rest.Tests", "majumi.CarService.CarsDataService.Rest.Tests\majumi.CarService.CarsDataService.Rest.Tests.csproj", "{8397A369-0E82-4B23-9C17-C9607C856FA9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{563192CA-411B-416F-B3A6-795D8CEFE66D}"
+	ProjectSection(SolutionItems) = preProject
+		run.bat = run.bat
+		test.bat = test.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

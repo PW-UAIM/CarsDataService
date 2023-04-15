@@ -9,4 +9,6 @@ public interface ICarDataService
     public Car[] GetAllCars();
 
     public Car[] GetCarsByClient(int clientID);
+
+    public bool AddCar(Car car);
 }
