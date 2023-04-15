@@ -10,7 +10,6 @@ public class Car
     public string EngineSize { get; set; }
     public string VIN { get; set; }
     public string LicensePlate { get; set; }
-
     public int ClientID { get; set; }
 
 

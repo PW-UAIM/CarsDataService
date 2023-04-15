@@ -15,6 +15,7 @@ public static class DataConverter
             Year = car.Year,
             Mileage = car.Mileage,
             EngineSize = car.EngineSize,
+            VIN = car.VIN,
             LicensePlate = car.LicensePlate,
             ClientID = car.ClientID
         };

@@ -11,4 +11,6 @@ public interface ICarDataService
     public Car[] GetCarsByClient(int clientID);
 
     public bool AddCar(Car car);
+
+    public string RunTests(string host, int port);
 }
