@@ -61,16 +61,8 @@ public class CarCollection : ICarCollection
     {
         lock(CarLock)
         {
-            Car? exisitingCar = FindByID(car.CarID);
-            if (exisitingCar != null)
-                return null;
-
-            int lenBef = Cars.Count;
+            car.CarID = Cars.Count + 1;
             Cars.Add(car);
-            int lenAft = Cars.Count;
-
-            if (lenBef >= lenAft)
-                return null;
 
             return car;
         }

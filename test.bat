@@ -8,11 +8,10 @@ CALL:curl_test "Wszystkie samochody" GET /car/all
 CALL:curl_test "Dane samochodow klienta o ID 6" GET /car/all/client/6
 
 
-echo Nazwa testu: "Dodaj samochod o ID 20""
+echo Nazwa testu: "Dodaj samochod""
 echo Testowany url: %url%%~3
 curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json" -d ^
 "{^
-	\"CarID\": 20,^
 	\"Make\": \"Renault\",^
 	\"Model\": \"Megan\",^
 	\"Year\": 2020,^
@@ -25,7 +24,7 @@ curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json" 
 echo:
 echo:
 
-CALL:curl_test "Dane samochodu o ID 20" GET /car/20
+CALL:curl_test "Dane samochodu o ID 11" GET /car/11
 
 EXIT /B 0
 
