@@ -20,4 +20,16 @@ public static class DataConverter
             ClientID = car.ClientID
         };
     }
+
+    public static List<CarData> ConvertToCarDataList(this List<Car> cars)
+    {
+        List<CarData> carData = new();
+
+        foreach (Car v in cars)
+        {
+            carData.Add(ConvertToCarData(v));
+        }
+
+        return carData;
+    }
 }

@@ -1,5 +1,6 @@
 ﻿using majumi.CarService.CarsDataService.Model;
 using majumi.CarService.CarsDataService.Model.Services;
+using System.ComponentModel;
 
 namespace majumi.CarService.CarsDataService.Logic;
 
@@ -12,40 +13,66 @@ public class CarCollection : ICarCollection
     {
         Cars = new List<Car>(CarCollectionReader.ReadFromJSON("Cars.json"));
     }
+    private Car? FindByID(int carID)
+    {
+        foreach (Car car in Cars)
+        {
+            if (car.CarID == carID)
+            {
+                return car;
+            }
+        }
 
-    public Car? GetById(int searchedId)
+        return null;
+    }
+
+    public Car? GetCarById(int carID)
     {
         lock (CarLock)
         {
-            return Cars.Find(car => car.CarID == searchedId);
+            return this.FindByID(carID);
         }
     }
 
-    public Car[] GetAllCars()
+    public List<Car> GetAllCars()
     {
         lock (CarLock)
         {
-            return Cars.ToArray();
+            return Cars;
         }
     }
 
-    public Car[] GetCarsByClient(int clientID)
+    public List<Car> GetCarsByClient(int clientID)
     {
         lock (CarLock)
         {
-            return Cars.Where(car => car.ClientID == clientID).ToArray();
+            List<Car> cars = new();
+            foreach (Car v in Cars)
+            {
+                if (v.ClientID == clientID)
+                {
+                    cars.Add(v);
+                }
+            }
+            return cars;
         }
     }
-
-    public bool AddCar(Car car)
+    public Car? AddCar(Car car)
     {
         lock(CarLock)
         {
+            Car? exisitingCar = FindByID(car.CarID);
+            if (exisitingCar != null)
+                return null;
+
             int lenBef = Cars.Count;
             Cars.Add(car);
             int lenAft = Cars.Count;
-            return (lenAft > lenBef);
 
+            if (lenBef >= lenAft)
+                return null;
+
+            return car;
         }
     }
 }

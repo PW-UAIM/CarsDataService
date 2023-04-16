@@ -4,6 +4,8 @@ using majumi.CarService.CarsDataService.Logic;
 using majumi.CarService.CarsDataService.Model;
 using majumi.CarService.CarsDataService.Model.Services;
 using majumi.CarService.CarsDataService.Rest.Model.Services;
+using majumi.CarService.CarsDataService.Rest.Model.Converters;
+using majumi.CarService.CarsDataService.Rest.Model.Model;
 
 namespace majumi.CarService.CarsDataService.Rest.Controllers;
 
@@ -23,30 +25,47 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
 
     [HttpGet]
     [Route("/car/{id:int}")]
-    public Car GetCar(int id)
+    public ActionResult<CarData> GetCar(int id)
     {
-        return carCollection.GetById(id);
+        Car? car = carCollection.GetCarById(id);
+        if (car == null)
+            return NotFound();
+
+        CarData carData = DataConverter.ConvertToCarData(car);
+        return Ok(carData);
     }
 
     [HttpGet]
     [Route("/car/all")]
-    public Car[] GetAllCars()
+    public ActionResult<List<CarData>> GetAllCars()
     {
-        return carCollection.GetAllCars();
+        List<Car> cars = carCollection.GetAllCars();
+        List<CarData> carData = DataConverter.ConvertToCarDataList(cars);
+
+        return Ok(carData);
+
     }
 
     [HttpGet]
     [Route("/car/all/client/{id:int}")]
-    public Car[] GetCarsByClient(int id)
+    public ActionResult<List<CarData>> GetCarsByClient(int id)
     {
-        return carCollection.GetCarsByClient(id);
+        List<Car>? cars = carCollection.GetCarsByClient(id);
+        List<CarData> carData = DataConverter.ConvertToCarDataList(cars);
+
+        return Ok(carData);
     }
 
     [HttpPost]
     [Route("/car/add")]
-    public bool AddCar(Car car) 
+    public ActionResult<CarData> AddCar(Car car) 
     {
-        return carCollection.AddCar(car);
+        Car? addedCar = carCollection.AddCar(car);
+        if (addedCar == null)
+            return UnprocessableEntity();
+        CarData carData = DataConverter.ConvertToCarData(addedCar);
+
+        return Created($"https://localhost:5000/car/get/{car.CarID}", carData);
     }
 
     [HttpGet]

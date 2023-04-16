@@ -1,16 +1,16 @@
 ﻿using majumi.CarService.CarsDataService.Model;
+using majumi.CarService.CarsDataService.Rest.Model.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace majumi.CarService.CarsDataService.Rest.Model.Services;
 
 public interface ICarDataService
 {
-    public Car GetCar(int carID);
+    public ActionResult<CarData> GetCar(int id);
 
-    public Car[] GetAllCars();
+    public ActionResult<List<CarData>> GetAllCars();
 
-    public Car[] GetCarsByClient(int clientID);
+    public ActionResult<List<CarData>> GetCarsByClient(int id);
 
-    public bool AddCar(Car car);
-
-    public string RunTests(string host, int port);
+    public ActionResult<CarData> AddCar(Car car);
 }
