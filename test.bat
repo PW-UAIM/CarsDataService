@@ -12,15 +12,15 @@ echo Nazwa testu: "Dodaj samochod o ID 20""
 echo Testowany url: %url%%~3
 curl -X POST https://localhost:5000/car/add -H "Content-Type: application/json" -d ^
 "{^
-	\"carID\": 20,^
-	\"make\": \"Renault\",^
-	\"model\": \"Megan\",^
-	\"year\": 2020,^
-	\"mileage\": 20000,^
-	 \"engineSize\": \"3.5\",^
-	 \"VIN\": \"YV4A22RK1M1234567\",^
-	 \"licensePlate\": \"PY21ZSL\",^
-	 \"clientID\": 6^
+	\"CarID\": 20,^
+	\"Make\": \"Renault\",^
+	\"Model\": \"Megan\",^
+	\"Year\": 2020,^
+	\"Mileage\": 20000,^
+	\"EngineSize\": \"3.5\",^
+	\"VIN\": \"YV4A22RK1M1234567\",^
+	\"LicensePlate\": \"PY21ZSL\",^
+	\"ClientID\": 6^
 }"
 echo:
 echo:
