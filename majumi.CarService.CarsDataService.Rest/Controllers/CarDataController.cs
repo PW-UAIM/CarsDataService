@@ -24,7 +24,7 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
     }
 
     [HttpGet]
-    [Route("/car/{id:int}")]
+    [Route("/getCar/{id:int}")]
     public ActionResult<CarData> GetCar(int id)
     {
         Car? car = carCollection.GetCarById(id);
@@ -36,18 +36,17 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
     }
 
     [HttpGet]
-    [Route("/car/all")]
+    [Route("/getAllCars")]
     public ActionResult<List<CarData>> GetAllCars()
     {
         List<Car> cars = carCollection.GetAllCars();
         List<CarData> carData = DataConverter.ConvertToCarDataList(cars);
 
         return Ok(carData);
-
     }
 
     [HttpGet]
-    [Route("/car/all/client/{id:int}")]
+    [Route("/getAllCarsByClient/{id:int}")]
     public ActionResult<List<CarData>> GetCarsByClient(int id)
     {
         List<Car>? cars = carCollection.GetCarsByClient(id);
@@ -57,7 +56,7 @@ public class CarDataController : ControllerBase, ICarDataService, ITestsService
     }
 
     [HttpPost]
-    [Route("/car/add")]
+    [Route("/addCar")]
     public ActionResult<CarData> AddCar(Car car) 
     {
         Car? addedCar = carCollection.AddCar(car);

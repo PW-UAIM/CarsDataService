@@ -25,9 +25,9 @@ public static class DataConverter
     {
         List<CarData> carData = new();
 
-        foreach (Car v in cars)
+        foreach (Car car in cars)
         {
-            carData.Add(ConvertToCarData(v));
+            carData.Add(ConvertToCarData(car));
         }
 
         return carData;
