@@ -1,0 +1,18 @@
+﻿FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+LABEL stage=zsutpwpatterns-webapplication_build
+WORKDIR /src
+COPY . .
+WORKDIR "/src/majumi.CarService.CarsDataService.Rest"
+RUN dotnet restore
+RUN dotnet build -c Production -o /app/build
+RUN dotnet publish -c Production -o /app/publish
+
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS runtime
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:5000
+WORKDIR /app
+EXPOSE 5000
+RUN echo "ASPNETCORE_URLS=$ASPNETCORE_URLS"
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "majumi.CarService.CarsDataService.Rest.dll"]
